@@ -82,7 +82,7 @@ public final class ModuleResolutionAttribute extends Attribute {
 
   /**
    * Constructs an empty {@link ModuleResolutionAttribute}. This object can be passed as a prototype
-   * to the {@link ClassReader#accept(org.apache.tapestry5.internal.plastic.asm.ClassVisitor, Attribute[], int)} method.
+   * to the {@link ClassReader#accept(org.objectweb.asm.ClassVisitor, Attribute[], int)} method.
    */
   public ModuleResolutionAttribute() {
     this(0);

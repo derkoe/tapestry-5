@@ -16,8 +16,8 @@ package org.apache.tapestry5.test;
 
 import org.apache.commons.cli.*;
 import org.apache.tapestry5.test.constants.TapestryRunnerConstants;
-import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.server.ssl.SslSocketConnector;
+import org.eclipse.jetty.http.HttpVersion;
+import org.eclipse.jetty.server.*;
 import org.eclipse.jetty.util.ssl.SslContextFactory;
 import org.eclipse.jetty.webapp.WebAppContext;
 
@@ -67,7 +67,7 @@ public class JettyRunner implements ServletContainerRunner
 
         if (keystoreFile.exists())
         {
-            SslContextFactory sslContextFactory = new SslContextFactory();
+            SslContextFactory.Server sslContextFactory = new SslContextFactory.Server();
 
             sslContextFactory.setKeyStorePath(keystoreFile.getAbsolutePath());
 
@@ -75,7 +75,8 @@ public class JettyRunner implements ServletContainerRunner
 
             sslContextFactory.setKeyManagerPassword("tapestry");
 
-            SslSocketConnector sslConnector = new SslSocketConnector(sslContextFactory);
+            ServerConnector sslConnector = new ServerConnector(getServer(),
+                    new SslConnectionFactory(sslContextFactory, HttpVersion.HTTP_1_1.asString()));
 
             sslConnector.setPort(sslPort);
 

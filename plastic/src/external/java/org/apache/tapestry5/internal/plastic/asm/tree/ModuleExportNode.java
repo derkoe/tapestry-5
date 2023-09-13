@@ -28,7 +28,6 @@
 package org.apache.tapestry5.internal.plastic.asm.tree;
 
 import java.util.List;
-
 import org.apache.tapestry5.internal.plastic.asm.ModuleVisitor;
 
 /**
@@ -38,11 +37,14 @@ import org.apache.tapestry5.internal.plastic.asm.ModuleVisitor;
  */
 public class ModuleExportNode {
 
-  /** The internal name of the exported package. */
+  /**
+   * The internal name of the exported package (see {@link
+   * org.objectweb.asm.Type#getInternalName()}).
+   */
   public String packaze;
 
   /**
-   * The access flags (see {@link org.apache.tapestry5.internal.plastic.asm.Opcodes}). Valid values are {@code
+   * The access flags (see {@link org.objectweb.asm.Opcodes}). Valid values are {@code
    * ACC_SYNTHETIC} and {@code ACC_MANDATED}.
    */
   public int access;
@@ -56,7 +58,8 @@ public class ModuleExportNode {
   /**
    * Constructs a new {@link ModuleExportNode}.
    *
-   * @param packaze the internal name of the exported package.
+   * @param packaze the internal name of the exported package (see {@link
+   *     org.objectweb.asm.Type#getInternalName()}).
    * @param access the package access flags, one or more of {@code ACC_SYNTHETIC} and {@code
    *     ACC_MANDATED}.
    * @param modules a list of modules that can access this exported package, specified with fully

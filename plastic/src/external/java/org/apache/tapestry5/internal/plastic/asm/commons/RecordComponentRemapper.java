@@ -60,7 +60,7 @@ public class RecordComponentRemapper extends RecordComponentVisitor {
    * Constructs a new {@link RecordComponentRemapper}.
    *
    * @param api the ASM API version supported by this remapper. Must be one of {@link
-   *     org.apache.tapestry5.internal.plastic.asm.Opcodes#ASM8} or {@link org.apache.tapestry5.internal.plastic.asm.Opcodes#ASM9}.
+   *     org.objectweb.asm.Opcodes#ASM8} or {@link org.objectweb.asm.Opcodes#ASM9}.
    * @param recordComponentVisitor the record component visitor this remapper must delegate to.
    * @param remapper the remapper to use to remap the types in the visited record component.
    */

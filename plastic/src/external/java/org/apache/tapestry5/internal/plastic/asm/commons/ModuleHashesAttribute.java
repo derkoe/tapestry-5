@@ -30,7 +30,6 @@ package org.apache.tapestry5.internal.plastic.asm.commons;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.tapestry5.internal.plastic.asm.Attribute;
 import org.apache.tapestry5.internal.plastic.asm.ByteVector;
 import org.apache.tapestry5.internal.plastic.asm.ClassReader;
@@ -70,7 +69,7 @@ public final class ModuleHashesAttribute extends Attribute {
 
   /**
    * Constructs an empty {@link ModuleHashesAttribute}. This object can be passed as a prototype to
-   * the {@link ClassReader#accept(org.apache.tapestry5.internal.plastic.asm.ClassVisitor, Attribute[], int)} method.
+   * the {@link ClassReader#accept(org.objectweb.asm.ClassVisitor, Attribute[], int)} method.
    */
   public ModuleHashesAttribute() {
     this(null, null, null);

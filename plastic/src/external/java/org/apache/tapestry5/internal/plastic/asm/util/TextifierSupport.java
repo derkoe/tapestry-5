@@ -22,11 +22,10 @@
 package org.apache.tapestry5.internal.plastic.asm.util;
 
 import java.util.Map;
-
 import org.apache.tapestry5.internal.plastic.asm.Label;
 
 /**
- * An {@link org.apache.tapestry5.internal.plastic.asm.Attribute} that can print a readable representation of itself.
+ * An {@link org.objectweb.asm.Attribute} that can print a readable representation of itself.
  *
  * @author Eugene Kuleshov
  */

@@ -28,7 +28,6 @@
 package org.apache.tapestry5.internal.plastic.asm.tree;
 
 import java.util.Map;
-
 import org.apache.tapestry5.internal.plastic.asm.MethodVisitor;
 import org.apache.tapestry5.internal.plastic.asm.Opcodes;
 
@@ -42,7 +41,7 @@ public class MethodInsnNode extends AbstractInsnNode {
 
   /**
    * The internal name of the method's owner class (see {@link
-   * org.apache.tapestry5.internal.plastic.asm.Type#getInternalName()}).
+   * org.objectweb.asm.Type#getInternalName()}).
    *
    * <p>For methods of arrays, e.g., {@code clone()}, the array type descriptor.
    */
@@ -51,7 +50,7 @@ public class MethodInsnNode extends AbstractInsnNode {
   /** The method's name. */
   public String name;
 
-  /** The method's descriptor (see {@link org.apache.tapestry5.internal.plastic.asm.Type}). */
+  /** The method's descriptor (see {@link org.objectweb.asm.Type}). */
   public String desc;
 
   /** Whether the method's owner class if an interface. */
@@ -63,9 +62,9 @@ public class MethodInsnNode extends AbstractInsnNode {
    * @param opcode the opcode of the type instruction to be constructed. This opcode must be
    *     INVOKEVIRTUAL, INVOKESPECIAL, INVOKESTATIC or INVOKEINTERFACE.
    * @param owner the internal name of the method's owner class (see {@link
-   *     org.apache.tapestry5.internal.plastic.asm.Type#getInternalName()}).
+   *     org.objectweb.asm.Type#getInternalName()}).
    * @param name the method's name.
-   * @param descriptor the method's descriptor (see {@link org.apache.tapestry5.internal.plastic.asm.Type}).
+   * @param descriptor the method's descriptor (see {@link org.objectweb.asm.Type}).
    */
   public MethodInsnNode(
       final int opcode, final String owner, final String name, final String descriptor) {
@@ -78,9 +77,9 @@ public class MethodInsnNode extends AbstractInsnNode {
    * @param opcode the opcode of the type instruction to be constructed. This opcode must be
    *     INVOKEVIRTUAL, INVOKESPECIAL, INVOKESTATIC or INVOKEINTERFACE.
    * @param owner the internal name of the method's owner class (see {@link
-   *     org.apache.tapestry5.internal.plastic.asm.Type#getInternalName()}).
+   *     org.objectweb.asm.Type#getInternalName()}).
    * @param name the method's name.
-   * @param descriptor the method's descriptor (see {@link org.apache.tapestry5.internal.plastic.asm.Type}).
+   * @param descriptor the method's descriptor (see {@link org.objectweb.asm.Type}).
    * @param isInterface if the method's owner class is an interface.
    */
   public MethodInsnNode(

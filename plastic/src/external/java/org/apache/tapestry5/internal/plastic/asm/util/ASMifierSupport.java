@@ -22,11 +22,10 @@
 package org.apache.tapestry5.internal.plastic.asm.util;
 
 import java.util.Map;
-
 import org.apache.tapestry5.internal.plastic.asm.Label;
 
 /**
- * An {@link org.apache.tapestry5.internal.plastic.asm.Attribute} that can generate the ASM code to create an equivalent
+ * An {@link org.objectweb.asm.Attribute} that can generate the ASM code to create an equivalent
  * attribute.
  *
  * @author Eugene Kuleshov

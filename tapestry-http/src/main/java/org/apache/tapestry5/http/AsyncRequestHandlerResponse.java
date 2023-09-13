@@ -14,9 +14,9 @@ package org.apache.tapestry5.http;
 import java.util.Objects;
 import java.util.concurrent.Executor;
 
-import javax.servlet.AsyncListener;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.AsyncListener;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * Class used by {@linkplain AsyncRequestHandler} to return information on how to handle

@@ -29,7 +29,6 @@
 package org.apache.tapestry5.internal.plastic.asm.tree;
 
 import java.util.List;
-
 import org.apache.tapestry5.internal.plastic.asm.Label;
 import org.apache.tapestry5.internal.plastic.asm.MethodVisitor;
 import org.apache.tapestry5.internal.plastic.asm.Opcodes;
@@ -66,7 +65,7 @@ public class LocalVariableAnnotationNode extends TypeAnnotationNode {
    * constructor</i>. Instead, they must use the {@link #LocalVariableAnnotationNode(int, TypePath,
    * LabelNode[], LabelNode[], int[], String)} version.
    *
-   * @param typeRef a reference to the annotated type. See {@link org.apache.tapestry5.internal.plastic.asm.TypeReference}.
+   * @param typeRef a reference to the annotated type. See {@link org.objectweb.asm.TypeReference}.
    * @param typePath the path to the annotated type argument, wildcard bound, array element type, or
    *     static inner type within 'typeRef'. May be {@literal null} if the annotation targets
    *     'typeRef' as a whole.
@@ -91,10 +90,9 @@ public class LocalVariableAnnotationNode extends TypeAnnotationNode {
   /**
    * Constructs a new {@link LocalVariableAnnotationNode}.
    *
-   * @param api the ASM API version implemented by this visitor. Must be one of {@link
-   *     Opcodes#ASM4}, {@link Opcodes#ASM5}, {@link Opcodes#ASM6}, {@link Opcodes#ASM7}, {@link
-   *     Opcodes#ASM8} or {@link Opcodes#ASM9}.
-   * @param typeRef a reference to the annotated type. See {@link org.apache.tapestry5.internal.plastic.asm.TypeReference}.
+   * @param api the ASM API version implemented by this visitor. Must be one of the {@code
+   *     ASM}<i>x</i> values in {@link Opcodes}.
+   * @param typeRef a reference to the annotated type. See {@link org.objectweb.asm.TypeReference}.
    * @param start the fist instructions corresponding to the continuous ranges that make the scope
    *     of this local variable (inclusive).
    * @param end the last instructions corresponding to the continuous ranges that make the scope of

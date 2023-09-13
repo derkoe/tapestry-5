@@ -14,7 +14,7 @@
 
 package org.apache.tapestry5.upload.internal.services;
 
-import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload2.core.FileUploadException;
 import org.apache.tapestry5.annotations.Events;
 import org.apache.tapestry5.beanmodel.services.*;
 import org.apache.tapestry5.internal.services.ComponentResultProcessorWrapper;

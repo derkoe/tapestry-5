@@ -29,7 +29,6 @@ package org.apache.tapestry5.internal.plastic.asm.tree;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.tapestry5.internal.plastic.asm.AnnotationVisitor;
 import org.apache.tapestry5.internal.plastic.asm.Opcodes;
 
@@ -47,7 +46,7 @@ public class AnnotationNode extends AnnotationVisitor {
    * The name value pairs of this annotation. Each name value pair is stored as two consecutive
    * elements in the list. The name is a {@link String}, and the value may be a {@link Byte}, {@link
    * Boolean}, {@link Character}, {@link Short}, {@link Integer}, {@link Long}, {@link Float},
-   * {@link Double}, {@link String} or {@link org.apache.tapestry5.internal.plastic.asm.Type}, or a two elements String
+   * {@link Double}, {@link String} or {@link org.objectweb.asm.Type}, or a two elements String
    * array (for enumeration values), an {@link AnnotationNode}, or a {@link List} of values of one
    * of the preceding types. The list may be {@literal null} if there is no name value pair.
    */
@@ -70,9 +69,8 @@ public class AnnotationNode extends AnnotationVisitor {
   /**
    * Constructs a new {@link AnnotationNode}.
    *
-   * @param api the ASM API version implemented by this visitor. Must be one of {@link
-   *     Opcodes#ASM4}, {@link Opcodes#ASM5}, {@link Opcodes#ASM6}, {@link Opcodes#ASM7}, {@link
-   *     Opcodes#ASM8} or {@link Opcodes#ASM9}.
+   * @param api the ASM API version implemented by this visitor. Must be one of the {@code
+   *     ASM}<i>x</i> values in {@link Opcodes}.
    * @param descriptor the class descriptor of the annotation class.
    */
   public AnnotationNode(final int api, final String descriptor) {
@@ -174,8 +172,8 @@ public class AnnotationNode extends AnnotationVisitor {
    * checks that this node, and all its children recursively, do not contain elements that were
    * introduced in more recent versions of the ASM API than the given version.
    *
-   * @param api an ASM API version. Must be one of {@link Opcodes#ASM4}, {@link Opcodes#ASM5},
-   *     {@link Opcodes#ASM6}, {@link Opcodes#ASM7}, {@link Opcodes#ASM8} or {@link Opcodes#ASM9}.
+   * @param api an ASM API version. Must be one of the {@code ASM}<i>x</i> values in {@link
+   *     Opcodes}.
    */
   public void check(final int api) {
     // nothing to do

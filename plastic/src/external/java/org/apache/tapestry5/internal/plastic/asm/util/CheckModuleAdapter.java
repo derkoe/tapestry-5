@@ -28,7 +28,6 @@
 package org.apache.tapestry5.internal.plastic.asm.util;
 
 import java.util.HashSet;
-
 import org.apache.tapestry5.internal.plastic.asm.ModuleVisitor;
 import org.apache.tapestry5.internal.plastic.asm.Opcodes;
 
@@ -68,7 +67,7 @@ public class CheckModuleAdapter extends ModuleVisitor {
    *
    * @param moduleVisitor the module visitor to which this adapter must delegate calls.
    * @param isOpen whether the visited module is open. Open modules have their {@link
-   *     Opcodes#ACC_OPEN} access flag set in {@link org.apache.tapestry5.internal.plastic.asm.ClassVisitor#visitModule}.
+   *     Opcodes#ACC_OPEN} access flag set in {@link org.objectweb.asm.ClassVisitor#visitModule}.
    * @throws IllegalStateException If a subclass calls this constructor.
    */
   public CheckModuleAdapter(final ModuleVisitor moduleVisitor, final boolean isOpen) {
@@ -81,12 +80,11 @@ public class CheckModuleAdapter extends ModuleVisitor {
   /**
    * Constructs a new {@link CheckModuleAdapter}.
    *
-   * @param api the ASM API version implemented by this visitor. Must be one of {@link
-   *     Opcodes#ASM4}, {@link Opcodes#ASM5}, {@link Opcodes#ASM6}, {@link Opcodes#ASM7}, {@link
-   *     Opcodes#ASM8} or {@link Opcodes#ASM9}.
+   * @param api the ASM API version implemented by this visitor. Must be one of the {@code
+   *     ASM}<i>x</i> values in {@link Opcodes}.
    * @param moduleVisitor the module visitor to which this adapter must delegate calls.
    * @param isOpen whether the visited module is open. Open modules have their {@link
-   *     Opcodes#ACC_OPEN} access flag set in {@link org.apache.tapestry5.internal.plastic.asm.ClassVisitor#visitModule}.
+   *     Opcodes#ACC_OPEN} access flag set in {@link org.objectweb.asm.ClassVisitor#visitModule}.
    */
   protected CheckModuleAdapter(
       final int api, final ModuleVisitor moduleVisitor, final boolean isOpen) {

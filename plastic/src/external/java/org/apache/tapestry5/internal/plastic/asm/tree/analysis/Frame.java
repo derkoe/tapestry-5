@@ -29,7 +29,6 @@ package org.apache.tapestry5.internal.plastic.asm.tree.analysis;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.tapestry5.internal.plastic.asm.Opcodes;
 import org.apache.tapestry5.internal.plastic.asm.Type;
 import org.apache.tapestry5.internal.plastic.asm.tree.AbstractInsnNode;
@@ -131,7 +130,7 @@ public class Frame<V extends Value> {
 
   /**
    * Initializes a frame corresponding to the target or to the successor of a jump instruction. This
-   * method is called by {@link Analyzer#analyze(String, org.apache.tapestry5.internal.plastic.asm.tree.MethodNode)} while
+   * method is called by {@link Analyzer#analyze(String, org.objectweb.asm.tree.MethodNode)} while
    * interpreting jump instructions. It is called once for each possible target of the jump
    * instruction, and once for its successor instruction (except for GOTO and JSR), before the frame
    * is merged with the existing frame at this location. The default implementation of this method
@@ -294,7 +293,7 @@ public class Frame<V extends Value> {
     V value2;
     V value3;
     V value4;
-    int var;
+    int varIndex;
 
     switch (insn.getOpcode()) {
       case Opcodes.NOP:
@@ -332,15 +331,15 @@ public class Frame<V extends Value> {
       case Opcodes.DSTORE:
       case Opcodes.ASTORE:
         value1 = interpreter.copyOperation(insn, pop());
-        var = ((VarInsnNode) insn).var;
-        setLocal(var, value1);
+        varIndex = ((VarInsnNode) insn).var;
+        setLocal(varIndex, value1);
         if (value1.getSize() == 2) {
-          setLocal(var + 1, interpreter.newEmptyValue(var + 1));
+          setLocal(varIndex + 1, interpreter.newEmptyValue(varIndex + 1));
         }
-        if (var > 0) {
-          Value local = getLocal(var - 1);
+        if (varIndex > 0) {
+          Value local = getLocal(varIndex - 1);
           if (local != null && local.getSize() == 2) {
-            setLocal(var - 1, interpreter.newEmptyValue(var - 1));
+            setLocal(varIndex - 1, interpreter.newEmptyValue(varIndex - 1));
           }
         }
         break;
@@ -528,8 +527,8 @@ public class Frame<V extends Value> {
         push(interpreter.unaryOperation(insn, pop()));
         break;
       case Opcodes.IINC:
-        var = ((IincInsnNode) insn).var;
-        setLocal(var, interpreter.unaryOperation(insn, getLocal(var)));
+        varIndex = ((IincInsnNode) insn).var;
+        setLocal(varIndex, interpreter.unaryOperation(insn, getLocal(varIndex)));
         break;
       case Opcodes.I2L:
       case Opcodes.I2F:

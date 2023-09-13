@@ -56,7 +56,7 @@ public final class ModuleTargetAttribute extends Attribute {
 
   /**
    * Constructs an empty {@link ModuleTargetAttribute}. This object can be passed as a prototype to
-   * the {@link ClassReader#accept(org.apache.tapestry5.internal.plastic.asm.ClassVisitor, Attribute[], int)} method.
+   * the {@link ClassReader#accept(org.objectweb.asm.ClassVisitor, Attribute[], int)} method.
    */
   public ModuleTargetAttribute() {
     this(null);
