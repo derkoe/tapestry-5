@@ -14,6 +14,12 @@
 
 package org.apache.tapestry5.internal.plastic;
 
+import org.apache.tapestry5.internal.plastic.asm.ClassReader;
+import org.apache.tapestry5.internal.plastic.asm.ClassWriter;
+import org.apache.tapestry5.internal.plastic.asm.Opcodes;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -30,9 +36,6 @@ import java.util.Set;
 import java.util.Stack;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import org.apache.tapestry5.internal.plastic.asm.ClassReader;
-import org.apache.tapestry5.internal.plastic.asm.ClassWriter;
-import org.apache.tapestry5.internal.plastic.asm.Opcodes;
 import org.apache.tapestry5.internal.plastic.asm.tree.AbstractInsnNode;
 import org.apache.tapestry5.internal.plastic.asm.tree.AnnotationNode;
 import org.apache.tapestry5.internal.plastic.asm.tree.ClassNode;
@@ -50,8 +53,6 @@ import org.apache.tapestry5.plastic.PlasticClassTransformation;
 import org.apache.tapestry5.plastic.PlasticConstants;
 import org.apache.tapestry5.plastic.PlasticManagerDelegate;
 import org.apache.tapestry5.plastic.TransformationOption;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Responsible for managing a class loader that allows ASM {@link ClassNode}s
@@ -86,9 +87,9 @@ public class PlasticClassPool implements ClassLoaderDelegate, Opcodes, PlasticCl
     private final StaticContext emptyStaticContext = new StaticContext();
 
     private final List<PlasticClassListener> listeners = new CopyOnWriteArrayList<PlasticClassListener>();
-    
+
     private PlasticClassPool parent;
-    
+
     private Collection<PlasticClassPool> children = new ArrayList<>();
 
     private final Cache<String, TypeCategory> typeName2Category = new Cache<String, TypeCategory>()
@@ -509,24 +510,24 @@ public class PlasticClassPool implements ClassLoaderDelegate, Opcodes, PlasticCl
         if (shouldInterceptClassLoading(baseClassName))
         {
             loader.loadClass(baseClassName);
-            
+
             PlasticClassPool current = this;
 
             BaseClassDef def = current.baseClassDefs.get(baseClassName);
-            
+
             while (def == null && current.parent != null)
             {
                 current = current.parent;
                 def = current.baseClassDefs.get(baseClassName);
             }
-            
+
             // Usually, when df is still null, that's because the superclass
             // is a page class too
             if (def == null)
             {
                 def = findBaseClassDef(baseClassName, current);
             }
-            
+
             assert def != null;
 
             return new PlasticClassImpl(classNode, implementationClassNode, this, def.inheritanceData, def.staticContext, proxy);
@@ -537,12 +538,12 @@ public class PlasticClassPool implements ClassLoaderDelegate, Opcodes, PlasticCl
         return new PlasticClassImpl(classNode, implementationClassNode, this, emptyInheritanceData, emptyStaticContext, proxy);
     }
 
-    private BaseClassDef findBaseClassDef(String baseClassName, PlasticClassPool plasticClassPool) 
+    private BaseClassDef findBaseClassDef(String baseClassName, PlasticClassPool plasticClassPool)
     {
         BaseClassDef def = plasticClassPool.baseClassDefs.get(baseClassName);
         if (def == null)
         {
-            for (PlasticClassPool child : plasticClassPool.children) 
+            for (PlasticClassPool child : plasticClassPool.children)
             {
                 def = child.findBaseClassDef(baseClassName, child);
                 if (def != null)
@@ -728,12 +729,12 @@ public class PlasticClassPool implements ClassLoaderDelegate, Opcodes, PlasticCl
 
         listeners.remove(listener);
     }
-    
+
     /**
      * Sets the parent of this instance. Only used to look up baseClassDefs.
      * @since 5.8.3
      */
-    public void setParent(PlasticClassPool parent) 
+    public void setParent(PlasticClassPool parent)
     {
         this.parent = parent;
         parent.children.add(this);
@@ -753,13 +754,13 @@ public class PlasticClassPool implements ClassLoaderDelegate, Opcodes, PlasticCl
 
     private FieldInstrumentations getFieldInstrumentations(String classInternalName)
     {
-        
+
         // Check whether parent pool already has instrumentations for
         // that class to avoid a duplicated class definition attempt
         // when running tapestry-core in multiple classloader mode.
         PlasticClassPool current = this;
         FieldInstrumentations result;
-        do 
+        do
         {
             result = current.instrumentations.get(classInternalName);
             current = current.parent;
@@ -858,11 +859,11 @@ public class PlasticClassPool implements ClassLoaderDelegate, Opcodes, PlasticCl
     }
 
     @Override
-    public String toString() 
+    public String toString()
     {
         return "PlasticClassPool [loader=" + loader + "]";
     }
-    
+
 }
 
 
