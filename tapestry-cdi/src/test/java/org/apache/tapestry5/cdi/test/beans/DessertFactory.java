@@ -16,8 +16,8 @@ package org.apache.tapestry5.cdi.test.beans;
 import org.apache.tapestry5.cdi.test.annotation.CustomDessert;
 import org.apache.tapestry5.cdi.test.annotation.DessertTime;
 
-import javax.enterprise.inject.New;
-import javax.enterprise.inject.Produces;
+import jakarta.enterprise.inject.New;
+import jakarta.enterprise.inject.Produces;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;

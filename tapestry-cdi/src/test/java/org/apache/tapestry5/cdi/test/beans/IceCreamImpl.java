@@ -15,7 +15,7 @@ package org.apache.tapestry5.cdi.test.beans;
 
 import org.apache.tapestry5.cdi.test.annotation.Iced;
 
-import javax.enterprise.context.SessionScoped;
+import jakarta.enterprise.context.SessionScoped;
 
 @Iced
 @SessionScoped

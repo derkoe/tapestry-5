@@ -18,8 +18,8 @@ import static org.example.app6.AppConstants.TEST_PERSISTENCE_UNIT_2;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
 import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
@@ -27,8 +27,7 @@ import org.apache.tapestry5.jpa.JpaPersistenceConstants;
 import org.apache.tapestry5.jpa.annotations.CommitAfter;
 import org.example.app6.entities.Thang;
 
-public class PersistThang
-{
+public class PersistThang {
     @PersistenceContext(unitName = TEST_PERSISTENCE_UNIT_2)
     private EntityManager entityManager;
 
@@ -38,8 +37,7 @@ public class PersistThang
 
     @CommitAfter
     @PersistenceContext(unitName = TEST_PERSISTENCE_UNIT_2)
-    void onCreateEntity()
-    {
+    void onCreateEntity() {
         final Thang thang = new Thang();
         thang.setName("name");
 
@@ -48,27 +46,23 @@ public class PersistThang
         this.thang = thang;
     }
 
-    void onChangeName()
-    {
+    void onChangeName() {
         thang.setName("name2");
 
         // No commit, so no real change.
     }
 
-    void onSetToTransient()
-    {
+    void onSetToTransient() {
         thang = new Thang();
     }
 
-    void onSetToNull()
-    {
+    void onSetToNull() {
         thang = null;
     }
 
     @CommitAfter
     @PersistenceContext(unitName = TEST_PERSISTENCE_UNIT_2)
-    void onDelete()
-    {
+    void onDelete() {
         final List<Thang> thangs = entityManager.createQuery("select t from Thang t").getResultList();
 
         entityManager.remove(thangs.get(0));

@@ -13,9 +13,9 @@
 // limitations under the License.
 package org.apache.tapestry5.cdi.test.beans;
 
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.ConversationScoped;
-import javax.inject.Inject;
+import jakarta.annotation.PostConstruct;
+import jakarta.enterprise.context.ConversationScoped;
+import jakarta.inject.Inject;
 import java.io.Serializable;
 
 @ConversationScoped

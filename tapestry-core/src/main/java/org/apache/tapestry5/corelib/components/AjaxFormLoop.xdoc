@@ -36,7 +36,7 @@ import org.apache.tapestry5.beaneditor.Validate;
 import org.apache.tapestry5.beaneditor.Width;
 import org.apache.tapestry5.ioc.internal.util.CollectionFactory;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
@@ -84,7 +84,7 @@ import org.apache.tapestry5.beaneditor.NonVisual;
 import org.apache.tapestry5.beaneditor.Validate;
 import org.apache.tapestry5.beaneditor.Width;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 public class Phone
