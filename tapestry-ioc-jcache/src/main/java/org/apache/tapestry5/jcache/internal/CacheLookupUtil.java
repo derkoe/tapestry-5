@@ -20,7 +20,7 @@ import java.util.regex.Pattern;
 
 import javax.cache.annotation.CacheKeyGenerator;
 import javax.cache.annotation.CacheResolverFactory;
-import javax.inject.Singleton;
+import jakarta.inject.Singleton;
 
 import org.apache.tapestry5.beanmodel.services.PlasticProxyFactoryImpl;
 import org.apache.tapestry5.commons.ObjectLocator;

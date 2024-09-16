@@ -16,14 +16,13 @@ package org.example.app6.services;
 
 import java.util.List;
 
-import javax.persistence.PersistenceContext;
+import jakarta.persistence.PersistenceContext;
 
 import org.apache.tapestry5.jpa.annotations.CommitAfter;
 import org.example.app6.AppConstants;
 import org.example.app6.entities.User;
 
-public interface UserDAO
-{
+public interface UserDAO {
     @CommitAfter
     @PersistenceContext(unitName = AppConstants.TEST_PERSISTENCE_UNIT)
     void add(User user);

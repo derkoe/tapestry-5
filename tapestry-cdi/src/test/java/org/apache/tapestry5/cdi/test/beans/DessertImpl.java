@@ -13,8 +13,8 @@
 // limitations under the License.
 package org.apache.tapestry5.cdi.test.beans;
 
-import javax.enterprise.context.SessionScoped;
-import javax.enterprise.inject.Default;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.enterprise.inject.Default;
 
 
 @SessionScoped

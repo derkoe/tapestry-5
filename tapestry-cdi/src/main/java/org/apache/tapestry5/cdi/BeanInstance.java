@@ -13,7 +13,7 @@
 // limitations under the License.
 package org.apache.tapestry5.cdi;
 
-import javax.enterprise.context.spi.CreationalContext;
+import jakarta.enterprise.context.spi.CreationalContext;
 
 /**
  * A CDI bean wrapper that embeds a {@link javax.enterprise.context.spi.CreationalContext CreationalContext}
