@@ -10,11 +10,11 @@ apply from: "md5.gradle"
 apply from: "sha256.gradle"
 
 project.ext.versions = [
-    jetty: "8.1.19.v20160209",
-    tomcat: "7.0.70",
+    jetty: "11.0.16",
+    tomcat: "10.1.13",
     testng: "6.14.3",
     easymock: "3.3.1",
-    servletapi: "3.0.1",
+    servletapi: "5.0.0",
     spock: "2.3-groovy-3.0",
     hibernate: "5.4.32.Final",
     slf4j: "1.7.25",
@@ -107,7 +107,7 @@ allprojects {
 
 idea {
     project {
-        languageLevel = "1.8"
+        languageLevel = "8"
     }
 }
 
@@ -159,8 +159,8 @@ subprojects {
         toolVersion = "0.8.7"
     }
 
-    sourceCompatibility = "1.8"
-    targetCompatibility = "1.8"
+    sourceCompatibility = "8"
+    targetCompatibility = "8"
 
     // See http://jira.codehaus.org/browse/GRADLE-784
 
@@ -370,7 +370,7 @@ subprojects {
         resolutionStrategy.force "antlr:antlr:2.7.7",
             "cglib:cglib-nodep:2.2",
             "commons-codec:commons-codec:1.10",
-            "commons-io:commons-io:2.4",
+            "commons-io:commons-io:2.13.0",
             "commons-logging:commons-logging:1.1.3",
             "hsqldb:hsqldb:2.2.8",
             "org.antlr:antlr-runtime:3.5.2",
